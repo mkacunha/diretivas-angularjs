@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="exemplo-diretivas">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="css/index.css">
+
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular-animate/angular-animate.min.js"></script>
+  <script src="lib/angular-route/angular-route.min.js"></script>
+  <script src="lib/angular-resource/angular-resource.min.js"></script>
+  <script src="lib/jquery/dist/jquery.min.js"></script>
+  <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+  <script src="main.js"></script>
+  <script src="modal-message/diretiva.js"></script>
+  <script src="modal-message/controller.js"></script>
+</head>
+<body>
+  <div ng-controller="ExemploModalMessageController">
+    <h2>Utilizando minha diretiva ModalMsg</h2>
+
+    <modal-msg class="btn btn-default" name='modal' title="Atenção, meu título..." message="Minha mensagem ao usuário..." size="sm">
+      Modal pequena
+    </modal-msg>
+
+    <modal-msg class="btn btn-default" name='modal' title="Atenção, meu título..." message="Minha mensagem ao usuário...">
+      Modal média
+    </modal-msg>
+
+    <modal-msg class="btn btn-default" name='modal' title="Atenção, meu título..." message="Minha mensagem ao usuário..." size="lg">
+      Modal grande
+    </modal-msg>
+
+  </br></br>
+
+  <p>Para este exemplo foi utilizado a diretiva <code>&lt;modal-msg&gt;</code> e seus atributos <code>title</code>, <code>message</code> e <code>size</code>, onde:</p>
+
+  <ul class="list-style">
+    <li><code>title</code>: foi utilizado para mostrar o título da modal, sendo que o mesmo também poderia ficar em branco.
+      Mas neste exemplo foi utilizado para mostrar o título <strong>Atenção, meu título...</strong>;
+    </li>
+
+    <li><code>message</code>: atributo utilizado para mostrar a mensagem ao usuário.
+      Neste exemplo foi utilizado para mostrar a mensagem <strong>Minha mensagem ao usuário...</strong>;
+    </li>
+
+    <li><code>size</code>: este atributo pode ser utilizado para configurar o tamanho da modal, sendo que neste exemplo foi utilizado o valor <code>sm</code> para modal
+      pequena, <code>lg</code> para a modal grande, e para a modal média simplesmente não foi informado, sendo assim o tamanho default da modal.
+    </li>
+  </ul>
+
+  <h2>Utilizando minha diretiva ModalMsg para excluir piadas de uma lista</h2>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th class="text-center col-md-1">#</th>
+          <th class="text-center col-md-12">Minha piada</th>
+          <th class="text-center col-md-1"></th>
+        </tr>
+      </thead>
+
+      <tbody id="lista-veiculos">
+        <tr ng-repeat="piada in piadas">
+          <td class="text-center">{{piada.id}}</td>
+          <td>{{piada.piada}}</td>
+          <td>
+            <modal-msg class="btn btn-link btn-xs" title="Atenção..." message="Realmente deseja remover a piada?" function_ok="remover(piada)" function_cancel="cancelou(piada)">
+              <span class="glyphicon glyphicon-remove"></span>
+            </modal-msg>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "angularjs-diretivas",
+  "authors": [
+    "mkacunha <mkacunha@gmail.com>"
+  ],
+  "description": "Exemplo de diretivas utilizando Angular JS",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^1.9.1",
+    "bootstrap": "^3.3.6",
+    "angular": "1.5.7",
+    "angular-route": "^1.5.7",
+    "angular-animate": "^1.5.7",
+    "angular-resource": "^1.5.7",
+    "angular-bootstrap": "^1.3.3"
+  }
+}
