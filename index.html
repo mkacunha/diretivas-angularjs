@@ -2,16 +2,16 @@
 <html lang="pt-br" ng-app="exemplo-diretivas">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Diretivas AngularJS</title>
 
-  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="css/index.css">
 
-  <script src="lib/angular/angular.min.js"></script>
-  <script src="lib/angular-animate/angular-animate.min.js"></script>
-  <script src="lib/angular-route/angular-route.min.js"></script>
-  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.3/ui-bootstrap-tpls.min.js"></script>
 
   <script src="main.js"></script>
   <script src="modal-message/diretiva.js"></script>
@@ -51,24 +51,26 @@
     </li>
   </ul>
 
-  <h2>Utilizando minha diretiva ModalMsg para excluir piadas de uma lista</h2>
+  <h2>Utilizando minha diretiva ModalMsg para excluir um item de uma lista de veículos</h2>
+
+  <a ng-click="carregarVeiculos()">Recarregar carros</a>
 
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
           <th class="text-center col-md-1">#</th>
-          <th class="text-center col-md-12">Minha piada</th>
+          <th class="text-center col-md-12">Veículo</th>
           <th class="text-center col-md-1"></th>
         </tr>
       </thead>
 
       <tbody id="lista-veiculos">
-        <tr ng-repeat="piada in piadas">
-          <td class="text-center">{{piada.id}}</td>
-          <td>{{piada.piada}}</td>
+        <tr ng-repeat="veiculo in veiculos">
+          <td class="text-center">{{veiculo.id}}</td>
+          <td>{{veiculo.veiculo}}</td>
           <td>
-            <modal-msg class="btn btn-link btn-xs" title="Atenção..." message="Realmente deseja remover a piada?" function_ok="remover(piada)" function_cancel="cancelou(piada)">
+            <modal-msg class="btn btn-link btn-xs" title="Atenção..." message="Realmente deseja remover o veículo {{veiculo.veiculo}}?" function_ok="remover(veiculo)" function_cancel="cancelou(veiculo)">
               <span class="glyphicon glyphicon-remove"></span>
             </modal-msg>
           </td>
@@ -76,11 +78,34 @@
       </tbody>
     </table>
   </div>
+
+  <p>Para este exemplo foi utilizado a diretiva <code>&lt;modal-msg&gt;</code> e seus atributos <code>title</code>, <code>message</code>, <code>size</code>, <code>function_ok</code> e <code>function_cancel</code> onde:</p>
+
+  <ul class="list-style">
+    <li>
+      <code>title</code>: foi utilizado para mostrar o título da modal: <strong>Atenção...</strong>;
+    </li>
+
+    <li>
+      <code>message</code>: foi utilizado para mostrar a mensagem <strong>Realmente deseja remover o veículo {veiculo} ?</strong>;
+    </li>
+
+    <li>
+      <code>function_ok</code>: este atributo pode ser utilizado para passar por parâmetro qual função que deverá ser executada quando o usuário escolher a opção <strong>OK</strong>
+      da modal, desta forma assim que a modal é fechada a função passada por parâmetro é executada. Neste exemplo foi utilizada a função <code>remover(veiculo)</code> que está localizada
+      no controller <code>ExemploModalMessageController</code>;
+    </li>
+
+    <li>
+      <code>function_cancel</code>: tem o mesmo comportamento que o atributo <code>function_ok</code>, mas este é executado quando o usuário selecionar a opção cancelar da modal.
+      Neste exemplo foi utilizada a função <code>cancelou(veiculo)</code> que está localizada
+      no controller <code>ExemploModalMessageController</code>
+    </li>
+  </ul>
 </div>
 
-  <footer>
-    <p>This project is maintained by <a href="https://github.com/mkacunha">mkacunha</a></p>
-    <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-  </footer>
+<footer>
+  <p>This project is maintained by <a href="https://github.com/mkacunha">mkacunha</a></p>
+</footer>
 </body>
 </html>
